@@ -1,6 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
+  max-width: 250px;
+  margin: 20px;
 };
 
 .title {
