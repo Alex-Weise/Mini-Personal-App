@@ -1,15 +1,24 @@
 .card {
   display: flex;
   flex-direction: column;
+  text-align: center;
   max-width: 250px;
   margin: 20px;
+  border-radius: 2%;
+  box-shadow: 2px 2px 5px 2px rgba(0,0,0,.35);
+  background-color: white;
 };
 
 .title {
   font-size: 18px;
+  color: #F90B6D;
 };
 
 .img {
   width: 250px;
-  height: 300px;
 };
+
+.p {
+  background-color: aliceblue;
+
+}
