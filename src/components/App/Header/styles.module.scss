@@ -1,0 +1,42 @@
+.head {
+    margin-top: 10px;
+    height: 80px;
+    // border: 2px solid black; //убрать потом
+}
+
+.category {
+    position: absolute;
+    background-color: aliceblue;
+    border-radius: 5px;
+    width: 180px;
+    height: 80px;
+}
+
+.p {
+    text-align: center;
+}
+
+.titles {
+    position: absolute;
+    background-color: aliceblue;
+    border-radius: 5px;
+    left: 430px;
+    height: 80px;
+    width: 500px;
+}
+
+.title {
+    text-align: center;
+}
+
+.onserch {
+    position: absolute;
+    right: 245px;
+    top: 35px;
+}
+
+.button {
+    position: absolute;
+    right: 340px;
+    top: 70px
+}

@@ -1,13 +1,20 @@
 import React from 'react';
-import PersonalCard from '../Personal-Card';
+import Category from './Category';
+import Header from './Header';
+import PersonalCard from './Personal-Card';
 import styles from './styles.module.scss';
 
 function App() {
   return (
-    <div className={styles.App}>
-      <h2>Каталог товаров: </h2>
-      <PersonalCard />
-    </div>
+    <>
+      <header className={styles.header}>
+        <Header />
+      </header>
+      <main className={styles.app}>
+        <Category />
+        <PersonalCard />
+      </main>
+    </>
   );
 }
 
