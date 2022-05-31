@@ -28,9 +28,11 @@ function Header () {
             <div className={styles.onserch}>
                 <input type='text' placeholder='Поиск...' size={30} 
                 onChange={(e) => setSerch(e.target.value) }></input>
+                <button className={styles.button} 
+                 onClick={handleSerch}>Искать</button>
             </div>
-            <button className={styles.button} 
-            onClick={handleSerch}>Искать</button>
+            {/* <button className={styles.button} 
+            onClick={handleSerch}>Искать</button> */}
         </section>
     );
 }

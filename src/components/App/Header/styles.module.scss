@@ -1,15 +1,17 @@
 .head {
     margin-top: 10px;
     height: 80px;
+    display: flex;
     // border: 2px solid black; //убрать потом
 }
 
 .category {
-    position: absolute;
+    // position: absolute;
     background-color: aliceblue;
     border-radius: 5px;
-    width: 180px;
+    width: 190px;
     height: 80px;
+
 }
 
 .p {
@@ -17,12 +19,11 @@
 }
 
 .titles {
-    position: absolute;
     background-color: aliceblue;
     border-radius: 5px;
-    left: 430px;
     height: 80px;
-    width: 500px;
+    width: 480px;
+    margin-left: 15px;
 }
 
 .title {
@@ -30,13 +31,10 @@
 }
 
 .onserch {
-    position: absolute;
-    right: 245px;
-    top: 35px;
+    text-align: center;
+
 }
 
 .button {
-    position: absolute;
-    right: 340px;
-    top: 70px
+    margin-top: 20px;
 }
