@@ -8,7 +8,7 @@ function Category () {
     React.useEffect( () => {
         fetch('https://dummyjson.com/products/categories')
           .then(response => response.json())
-          .then(obj => setCat(Array.from(obj)))
+          .then(obj => setCat(obj))
     }, [])
 
 

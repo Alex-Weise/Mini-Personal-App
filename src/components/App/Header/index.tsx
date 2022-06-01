@@ -31,8 +31,6 @@ function Header () {
                 <button className={styles.button} 
                  onClick={handleSerch}>Искать</button>
             </div>
-            {/* <button className={styles.button} 
-            onClick={handleSerch}>Искать</button> */}
         </section>
     );
 }
