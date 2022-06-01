@@ -1,13 +1,9 @@
 import React, { FC } from "react";
+import { TCard } from "../../../../type/type";
 import styles from "./styles.module.scss"
 
-type TProps = {
-  title: string,
-  img: string,
-  discr: string,
-}
 
-const Card:FC<TProps> = ({title, img, discr}) =>  {
+const Card:FC<TCard> = ({title, img, discr}) =>  {
     return (
       <div className={styles.card}>
           <h3 className={styles.title}>{title}</h3>

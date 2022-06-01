@@ -1,14 +1,13 @@
+import React, {FC} from "react";
 import styles from "./styles.module.scss"
+import { TButton } from "../../../../type/type";
 
-type TProps = {
-    name: string,
-};
-
-function Button(props:TProps) {
+const Button: FC<TButton> = ({name, onClick}) => {
+  const str:string = name[0].toUpperCase() + name.slice(1);
 
     return (
-        <button className={styles.button} >
-         {props.name}
+        <button className={styles.button} onClick={() => onClick(name)} >
+         {str}
         </button>
     );
 }

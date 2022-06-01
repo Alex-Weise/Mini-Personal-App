@@ -1,22 +1,14 @@
-import React from "react";
+import React, {FC} from "react";
 import Button from "./Button";
 import styles from "./styles.module.scss";
+import { TCatergory } from "../../../type/type";
 
-function Category () {
-    const [categories, setCat] = React.useState([]);
-
-    React.useEffect( () => {
-        fetch('https://dummyjson.com/products/categories')
-          .then(response => response.json())
-          .then(obj => setCat(obj))
-    }, [])
-
+const Category: FC<TCatergory> =  ({categories, onClick}) => {
 
     return (
         <section className={styles.buttons}>
          {categories.map( (item:string, index) => {
-             let str = item[0].toUpperCase() + item.slice(1);
-             return <Button name={str} key={index} />
+             return <Button name={item} key={index} onClick={(str:string) => onClick(str)} />
           })}
         </section>
     );
