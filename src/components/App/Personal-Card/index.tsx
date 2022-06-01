@@ -23,24 +23,18 @@ const PersonalCard:FC = () => {
 const handlerscroll = (event:Event) => {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const scrolled = Math.ceil(window.scrollY);
-    console.log(scrollable, "document - inner", scrolled);
-    for (let i=0; i <= 11; i++) {
       if (scrollable === scrolled) {
-        // if (limit >= 100) {
-        //    setLimit(100);
-        //    break;
-        // };
-        console.log('scroll');
         setLimit(limit + 9);
       }
-    }
+      if (limit >= 100) {
+          setLimit(100);
+          window.removeEventListener('scroll', handlerscroll);
+        }
 };
 
     useEffect( () => {
         window.addEventListener('scroll', handlerscroll);
-
-    //   return window.removeEventListener('scroll', handlerscroll);
-    }, [])
+    }, [limit])
 
     return (
         <section className={styles.section_card}>
