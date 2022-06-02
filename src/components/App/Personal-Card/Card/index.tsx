@@ -1,7 +1,11 @@
 import React, { FC } from "react";
-import { TCard } from "../../../../type/type";
 import styles from "./styles.module.scss"
 
+type TCard = {
+  title: string,
+  img: string,
+  discr: string,
+}
 
 const Card:FC<TCard> = ({title, img, discr}) =>  {
     return (

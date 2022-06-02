@@ -1,7 +1,11 @@
 import React, {FC} from "react";
 import Button from "./Button";
 import styles from "./styles.module.scss";
-import { TCatergory } from "../../../type/type";
+
+type TCatergory = {
+    categories: string[],
+    onClick: Function,
+}
 
 const Category: FC<TCatergory> =  ({categories, onClick}) => {
 

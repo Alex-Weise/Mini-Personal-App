@@ -1,6 +1,9 @@
 import React, { FC, useState } from "react";
 import styles from "./styles.module.scss"
-import { THeader } from "../../../type/type";
+
+type THeader = {
+    onClick: Function,
+}
 
 const Header:FC<THeader> =  ({onClick}) => {
   const [value, setValue] = useState<string>('')
@@ -15,8 +18,8 @@ const Header:FC<THeader> =  ({onClick}) => {
                 <h2 className={styles.title}>Собственно товары</h2>
             </div>
             <div className={styles.onserch}>
-                <input type='text' placeholder='Поиск...' size={30} 
-                onChange={(e) => setValue(e.target.value) }></input>
+                <input type='text' placeholder='Поиск...' size={30} id="inputSearch"
+                onChange={(e) => setValue(e.target.value)}></input>
                 <button className={styles.button} 
                  onClick={() => onClick(value)}>Искать</button>
             </div>
