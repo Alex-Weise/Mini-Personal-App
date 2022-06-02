@@ -1,21 +1,10 @@
-import React from "react";
+import React, { FC, useState } from "react";
 import styles from "./styles.module.scss"
+import { THeader } from "../../../type/type";
 
-function Header () {
-    const [serch, setSerch] = React.useState<string>('');
-    const [result, setResult] = React.useState<[]>([])
+const Header:FC<THeader> =  ({onClick}) => {
+  const [value, setValue] = useState<string>('')
 
-
-    const handleSerch = async () => {
-        try {
-          let response = await fetch(`https://dummyjson.com/products/search?q=${serch}`);
-          let product = await response.json();
-          setResult(product);
-        } catch (err) {
-          return "Поиск не дал результатов.";
-        }
-
-    }
 
     return (
         <section className={styles.head}>
@@ -27,9 +16,9 @@ function Header () {
             </div>
             <div className={styles.onserch}>
                 <input type='text' placeholder='Поиск...' size={30} 
-                onChange={(e) => setSerch(e.target.value) }></input>
+                onChange={(e) => setValue(e.target.value) }></input>
                 <button className={styles.button} 
-                 onClick={handleSerch}>Искать</button>
+                 onClick={() => onClick(value)}>Искать</button>
             </div>
         </section>
     );

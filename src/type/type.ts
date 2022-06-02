@@ -4,11 +4,14 @@ export type TContent = {
       description: string,
       id: number,
       category: string,
+
 };
 export type TPersonalCard = {
+    catalog: TContent[],
     content: TContent[],
     error: boolean,
     loading: boolean,
+    serchErr: string,
 };
 export type TCard = {
     title: string,
@@ -23,4 +26,6 @@ export type TCatergory = {
     categories: string[],
     onClick: Function,
 };
-
+export type THeader = {
+    onClick: Function,
+}
