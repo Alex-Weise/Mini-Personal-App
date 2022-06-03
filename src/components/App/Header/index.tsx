@@ -8,7 +8,6 @@ type THeader = {
 const Header:FC<THeader> =  ({onClick}) => {
   const [value, setValue] = useState<string>('')
 
-
     return (
         <section className={styles.head}>
             <div className={styles.category}>
@@ -19,9 +18,10 @@ const Header:FC<THeader> =  ({onClick}) => {
             </div>
             <div className={styles.onserch}>
                 <input type='text' placeholder='Поиск...' size={30} id="inputSearch"
-                onChange={(e) => setValue(e.target.value)}></input>
+                onChange={(e) => setValue(e.target.value)} value={value}></input>
+                <button type="reset" onClick={ () => setValue('')}>X</button>
                 <button className={styles.button} 
-                 onClick={() => onClick(value)}>Искать</button>
+                 onClick={(e) => onClick(value)}>Искать</button>
             </div>
         </section>
     );
