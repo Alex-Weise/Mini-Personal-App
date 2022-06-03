@@ -6,9 +6,12 @@ import { TContent } from "../../../type/type"
 
 type TPersonalCard = {
   URL: string,
+  total: Function,
+  concatURL: string,
+  clearSkip: Function,
 };
 
-const PersonalCard:FC<TPersonalCard> = ({URL}) => {
+const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
   const [products, setProducts] = useState<TContent[]>([]);
   const [isError, setIsError] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -19,14 +22,28 @@ const PersonalCard:FC<TPersonalCard> = ({URL}) => {
       .then(response => response.json())
       .then(data => { 
         if(data.products.length === 0) setIsSearchErr("Поиск не дал результатов")
-        else setProducts(data.products)})
+        else { 
+          setProducts(data.products)
+          total(data.total);}
+      })
       .catch(err => setIsError(true))
       .finally(() => setIsLoading(false)) 
     
     return () => {
+      clearSkip(9);
       setIsError(false);
       setIsSearchErr('')}
   },[URL])
+
+  useEffect ( () => {
+    async function Concat() {
+      await fetch(concatURL)
+             .then(response => response.json())
+             .then(data => setProducts(products.concat(data.products)))
+    };
+    if (!!concatURL) Concat()
+
+  }, [concatURL])
 
  if (isError || isSerchErr) {
    return (<section className={styles.error}>

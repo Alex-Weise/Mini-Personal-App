@@ -2,11 +2,9 @@
     margin-top: 10px;
     height: 80px;
     display: flex;
-    // border: 2px solid black; //убрать потом
 }
 
 .category {
-    // position: absolute;
     background-color: aliceblue;
     border-radius: 5px;
     width: 190px;
@@ -28,6 +26,12 @@
 
 .title {
     text-align: center;
+    margin: 5px;
+}
+
+.total {
+    text-align: center;
+    margin: 0;
 }
 
 .onserch {
