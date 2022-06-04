@@ -1,15 +1,15 @@
-import React, { Suspense } from 'react';
-import Category from './Category';
-import Header from './Header';
-import PersonalCard from './Personal-Card';
-import styles from './styles.module.scss';
-import CircularProgress from '@mui/material/CircularProgress';
+import React, { Suspense } from 'react'
+import Category from './Category'
+import Header from './Header'
+import PersonalCard from './Personal-Card'
+import styles from './styles.module.scss'
+import CircularProgress from '@mui/material/CircularProgress'
 
-const DEFAULT_REQUEST_LIMIT = 9;
-export const DEFAULT_URL = `https://dummyjson.com/products?limit=${DEFAULT_REQUEST_LIMIT}`
+export const DEFAULT_REQUEST_LIMIT = 12;
+export const DEFAULT_URL = `https://dummyjson.com/products?limit=${DEFAULT_REQUEST_LIMIT}`;
 
 function App() {
-  const [categories, setCat] = React.useState<string[]>([]);
+  const [categories, setCat] = React.useState<string[]>([])
   const [isHide, setIsHide] = React.useState(true)
 
   React.useEffect( () => {
@@ -18,50 +18,49 @@ function App() {
       .then(data => setCat(data))
   }, [])
 
-  const [search, setSearch] = React.useState<string>('');
-  const [category, setCategory] = React.useState<string>('');
-  const [skip, setSkip] = React.useState<number>(9);
-  const [URL, setURL] = React.useState<string>(DEFAULT_URL);
-  const [total, setTotal] = React.useState<number>(0);
-  const [concatURL, setConcatURL] = React.useState<string>(``);
+  const [search, setSearch] = React.useState<string>('')
+  const [category, setCategory] = React.useState<string>('')
+  const [skip, setSkip] = React.useState<number>(DEFAULT_REQUEST_LIMIT)
+  const [URL, setURL] = React.useState<string>(DEFAULT_URL)
+  const [total, setTotal] = React.useState<number>(0)
+  const [concatURL, setConcatURL] = React.useState<string>(``)
 
   React.useEffect ( () => {
     if (!!search) {
-      setURL(`https://dummyjson.com/products/search?q=${search}&limit=${DEFAULT_REQUEST_LIMIT}`);
+      setURL(`https://dummyjson.com/products/search?q=${search}&limit=${DEFAULT_REQUEST_LIMIT}`)
     }
     return () => {
-      setSearch('');
+      setSearch('')
     }
   }, [search])
 
   React.useEffect ( () => {
     if(!!category) {
-      setURL(`https://dummyjson.com/products/category/${category}?limit=${DEFAULT_REQUEST_LIMIT}`);
+      setURL(`https://dummyjson.com/products/category/${category}?limit=${DEFAULT_REQUEST_LIMIT}`)
     }
     return () => {
-      setCategory('');
+      setCategory('')
     }
   }, [category])
 
-const handlerscroll = () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = Math.ceil(window.scrollY);
-     if (scrolled === scrollable) {
-        setSkip(skip + DEFAULT_REQUEST_LIMIT);
-        setConcatURL(URL + `&skip=${skip}`);
-      }
-}
-
   React.useEffect ( () => {
+    const handlerscroll = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = Math.ceil(window.scrollY);
+       if (scrolled === scrollable) {
+          setSkip(skip + DEFAULT_REQUEST_LIMIT)
+          setConcatURL(URL + `&skip=${skip}`)
+        }
+  }
     if (total > 9 && !(skip >= total)) {
-        window.addEventListener('scroll', handlerscroll);
+        window.addEventListener('scroll', handlerscroll)
     }
     return () => {
-      window.removeEventListener('scroll', handlerscroll);
-      setConcatURL(``);
+      window.removeEventListener('scroll', handlerscroll)
+      setConcatURL(``)
     }
     
-  }, [skip, handlerscroll, total])
+  }, [skip, total, URL])
   
   return (
     <>

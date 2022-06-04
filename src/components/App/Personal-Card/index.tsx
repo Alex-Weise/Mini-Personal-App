@@ -1,20 +1,21 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react"
 import styles from "./styles.module.scss"
 import Card from "./Card"
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress'
 import { TContent } from "../../../type/type"
+import { DEFAULT_REQUEST_LIMIT } from "../index"
 
 type TPersonalCard = {
   URL: string,
   total: Function,
   concatURL: string,
   clearSkip: Function,
-};
+}
 
 const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
-  const [products, setProducts] = useState<TContent[]>([]);
-  const [isError, setIsError] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [products, setProducts] = useState<TContent[]>([])
+  const [isError, setIsError] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(true)
   const [isSerchErr, setIsSearchErr] = React.useState<string>('')
 
   useEffect ( () => {
@@ -30,10 +31,10 @@ const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
       .finally(() => setIsLoading(false)) 
     
     return () => {
-      clearSkip(9);
+      clearSkip(DEFAULT_REQUEST_LIMIT);
       setIsError(false);
       setIsSearchErr('')}
-  },[URL])
+  },[URL, clearSkip, total])
 
   useEffect ( () => {
     async function Concat() {
@@ -43,7 +44,7 @@ const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
     };
     if (!!concatURL) Concat()
 
-  }, [concatURL])
+  }, [concatURL, products])
 
  if (isError || isSerchErr) {
    return (<section className={styles.error}>

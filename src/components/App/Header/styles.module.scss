@@ -20,8 +20,9 @@
     background-color: aliceblue;
     border-radius: 5px;
     height: 80px;
-    width: 480px;
+    width: 530px;
     margin-left: 15px;
+    margin-right: 15px;
 }
 
 .title {
@@ -34,11 +35,31 @@
     margin: 0;
 }
 
-.onserch {
+.serch {
+    flex-direction: column;
     text-align: center;
 
 }
 
 .button {
-    margin-top: 20px;
+    // margin-top: 20px;
 }
+
+.buttonX {
+    border: 0;
+    border-radius: 50%;
+    background-color: aliceblue;
+}
+
+.hide {
+    display: none;
+}
+
+.input {
+    flex-direction: row;
+    background-color: aliceblue;
+}
+
+// .border {
+//     border: 2px solid black;
+// }
