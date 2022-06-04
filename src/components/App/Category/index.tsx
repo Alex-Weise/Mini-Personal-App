@@ -2,6 +2,7 @@ import React, {FC} from "react";
 import Button from "./Button";
 import styles from "./styles.module.scss";
 
+
 type TCatergory = {
     categories: string[],
     onClick: Function,

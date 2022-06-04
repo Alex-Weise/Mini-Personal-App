@@ -5,15 +5,18 @@ import { DEFAULT_URL } from "../../App"
 type THeader = {
     onClick: Function,
     setURL: Function,
+    setIsHide: Function,
     total: number,
+    isHide: boolean,
 }
 
-const Header:FC<THeader> =  ({onClick, setURL, total}) => {
-  const [value, setValue] = useState<string>('')
-
+const Header:FC<THeader> =  ({onClick, setURL, total, setIsHide, isHide}) => {
+  const [value, setValue] = useState<string>('');
+console.log(isHide);
     return (
         <section className={styles.head}>
-            <div className={styles.category}>
+            <div className={styles.category} onClick={
+                () => isHide ? setIsHide(false) : setIsHide(true)}>
                <h3 className={styles.p}> Категории: </h3>
             </div>
             <div className={styles.titles} onClick={() => setURL(DEFAULT_URL)} >

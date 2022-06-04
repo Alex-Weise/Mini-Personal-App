@@ -1,14 +1,15 @@
 .button {
   margin: 5px;
   padding: 2px;
-  border: 2px solid black;
-  border-radius: 5px;
-  background-color: aliceblue;
+  background-color: #edf2e5;
   text-align: start;
+  border: 0;
   width: 130px;
-  font-size: 14px;
+  font-size: 16px;
   &:hover {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: rgb(205, 233, 247);
-    font-size: 16px;
+    font-size: 18px;
+    border-bottom: 2px solid black;
   }
 };

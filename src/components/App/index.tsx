@@ -10,6 +10,7 @@ export const DEFAULT_URL = `https://dummyjson.com/products?limit=${DEFAULT_REQUE
 
 function App() {
   const [categories, setCat] = React.useState<string[]>([]);
+  const [isHide, setIsHide] = React.useState(true)
 
   React.useEffect( () => {
     fetch('https://dummyjson.com/products/categories')
@@ -65,10 +66,11 @@ const handlerscroll = () => {
   return (
     <>
       <header className={styles.header}>
-        <Header onClick={setSearch} setURL={setURL} total={total} />
+        <Header onClick={setSearch} setURL={setURL} total={total}
+        setIsHide={setIsHide} isHide={isHide} />
       </header>
       <main className={styles.app}>
-        <Category categories={categories} onClick={setCategory} />
+        <div className={isHide ? styles.hiden : undefined}><Category categories={categories} onClick={setCategory} /> </div>
         <Suspense fallback={<CircularProgress />}>
         <PersonalCard URL={URL} total={setTotal} concatURL={concatURL} 
         clearSkip={setSkip}/>
