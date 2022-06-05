@@ -31,6 +31,7 @@ function App() {
     }
     return () => {
       setSearch('')
+      setTotal(0)
     }
   }, [search])
 

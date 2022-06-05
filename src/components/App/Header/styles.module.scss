@@ -41,14 +41,14 @@
 
 }
 
-.button {
-    // margin-top: 20px;
-}
-
 .buttonX {
+    display: inline-block;
     border: 0;
-    border-radius: 50%;
-    background-color: aliceblue;
+    border-radius: 3px;
+    background: transparent;
+    position: absolute;
+    right: 0;
+    top: 1px;
 }
 
 .hide {
@@ -57,9 +57,10 @@
 
 .input {
     flex-direction: row;
-    background-color: aliceblue;
+    background: transparent;
+    position: relative;
+    border: 0;
+    outline: 0;
+    width: 100%;
 }
 
-// .border {
-//     border: 2px solid black;
-// }
