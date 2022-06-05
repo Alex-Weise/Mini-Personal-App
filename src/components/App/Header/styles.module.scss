@@ -2,14 +2,16 @@
     margin-top: 10px;
     height: 80px;
     display: flex;
+    background-color: #f9f5bf23;
+    border-radius: 10px;
+    box-shadow: 6px -3px 10px 2px rgba(0,0,0,.35);
 }
 
 .category {
-    background-color: aliceblue;
-    border-radius: 5px;
+    background: transparent;
     width: 190px;
     height: 80px;
-
+    font-size: 20px;
 }
 
 .p {
@@ -17,8 +19,7 @@
 }
 
 .titles {
-    background-color: aliceblue;
-    border-radius: 5px;
+    background: transparent;
     height: 80px;
     width: 530px;
     margin-left: 15px;

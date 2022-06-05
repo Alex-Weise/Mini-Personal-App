@@ -1,14 +1,15 @@
 .button {
   margin: 5px;
   padding: 2px;
-  background-color: #edf2e5;
+  background: transparent;
   text-align: start;
   border: 0;
+  border-radius: 4px;
   width: 130px;
   font-size: 16px;
   &:hover {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background-color: rgb(205, 233, 247);
+    background-color: #dfefa0a2;
     font-size: 18px;
     border-bottom: 2px solid black;
   }

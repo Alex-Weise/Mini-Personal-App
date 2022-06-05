@@ -1,8 +1,11 @@
 export type TContent = {
-      brand: string,
-      images: string[],
+      title: string,
       description: string,
-      id: number,
+      price: number,
+      rating: number,
       category: string,
-
+      brand: string,
+      thumbnail: string,
+      images: string[],
+      id: number,
 };
