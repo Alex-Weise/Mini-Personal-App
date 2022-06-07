@@ -4,6 +4,7 @@ import Header from './Header'
 import PersonalCard from './Personal-Card'
 import styles from './styles.module.scss'
 import CircularProgress from '@mui/material/CircularProgress'
+import { Collapse } from '@mui/material'
 
 export const DEFAULT_REQUEST_LIMIT = 12;
 export const DEFAULT_URL = `https://dummyjson.com/products?limit=${DEFAULT_REQUEST_LIMIT}`;
@@ -70,7 +71,9 @@ function App() {
         setIsHide={setIsHide} isHide={isHide} />
       </header>
       <main className={styles.app}>
-        <div className={isHide ? styles.hiden : undefined}><Category categories={categories} onClick={setCategory} /> </div>
+        <Collapse orientation="horizontal" in={!isHide}>
+           <Category categories={categories} onClick={setCategory} />
+        </Collapse>
         <Suspense fallback={<CircularProgress />}>
         <PersonalCard URL={URL} total={setTotal} concatURL={concatURL} 
         clearSkip={setSkip}/>

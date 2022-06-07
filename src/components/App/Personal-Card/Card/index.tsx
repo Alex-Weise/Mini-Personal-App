@@ -11,13 +11,24 @@ type TCard = {
 
 const Card:FC<TCard> = ({title, img, discr, setItemID, id}) =>  {
     return (
-      <div className={styles.card} onClick={() => setItemID(id)}>
-          <h3 className={styles.title}>{title}</h3>
-          <p className={styles.p}>
-          <img className={styles.img} src={img} alt={title}></img>
+        <div className={styles.card} onClick={() => setItemID(id)}>
+          <div className={styles.image}>
+            <img src={img} alt={title} className={styles.img}></img>
+          </div>
+          <span className={styles.text}>
+            <h3 className={styles.title}>{title}</h3>
+            <p className={styles.p}>
           {discr}</p>
-      </div>
+          </span>
+        </div>
     );
 }
 
 export default Card;
+
+// style={{
+//   backgroundImage: `url(${img})`,
+//   backgroundSize: `contain`,
+//   backgroundPosition: `center`,
+//   backgroundRepeat: `no-repeat`,
+//  }}

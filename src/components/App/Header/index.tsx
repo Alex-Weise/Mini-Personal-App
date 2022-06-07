@@ -23,7 +23,7 @@ const Header:FC<THeader> =  ({onClick, setURL, total, setIsHide, isHide}) => {
                 <h2 className={styles.title}>Собственно товары</h2>
                 <h3 className={styles.total}>Всего {total}</h3>
             </div>
-            <form className={styles.serch} >
+            <div className={styles.serch} >
               <p className={styles.input}>
                 <input type='text' placeholder='Поиск...' size={25} id="inputSearch"
                 onChange={(e) => setValue(e.target.value)} value={value}></input>
@@ -37,7 +37,7 @@ const Header:FC<THeader> =  ({onClick, setURL, total, setIsHide, isHide}) => {
                  onClick={(e) => {
                      onClick(value)}}></input>
               </p>
-           </form>
+           </div>
         </section>
     );
 }
