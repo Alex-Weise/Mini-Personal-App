@@ -80,9 +80,9 @@ const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
   } else {
      return (
         <section className={styles.section_card}>
-          {!!itemID ? <ItemCard product={product} /> : 
+          {false ? <ItemCard product={product} /> : 
               products.map( (item) => {
-                 return (<Card title={item.brand} img={item.thumbnail} id={item.id}
+                 return (<Card title={item.brand} img={item.images} id={item.id}
                    discr={item.description} key={item.id} setItemID={GetProductOne}/>)})}
         </section>
       );

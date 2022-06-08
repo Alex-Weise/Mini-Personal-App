@@ -10,20 +10,25 @@
 };
 
 .text {
-text-align: start;
+  display: block;
+  text-align: start;
+  overflow: hidden;
 }
 
 .image {
   float: left;
   margin: 2px;
   text-align: start;
-  width: 30%;
+  width: 50%;
+  overflow: hidden;
+  max-width: 250px;
 }
 
 .img {
   display: block;
   width: 100%;
   object-fit: fill;
+  overflow: hidden;
 }
 
 .title {
