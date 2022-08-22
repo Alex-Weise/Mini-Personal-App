@@ -1,13 +1,13 @@
 .app {
   display: flex;
   flex-direction: row;
-margin-left: auto;
-margin-right: auto;
-max-width: 80%;
-background-color: #edf2e590;
-box-shadow: 5px 3px 10px 8px rgba(0,0,0,.35);
-border-radius: 10px;
-text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+  background-color: #edf2e590;
+  box-shadow: 5px 3px 10px 8px rgba(0,0,0,.35);
+  border-radius: 10px;
+  text-align: center;
 };
 
 .header {
@@ -22,5 +22,22 @@ text-align: center;
 
 .hiden {
   display:none;
-}
+};
 
+.footer {
+  margin: 10px 0;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+};
+
+.foottext {
+  font-size: 18px;
+  text-align: center;
+  color: white;
+};
+
+.img {
+  width: 40px;
+  height: 40px;
+};

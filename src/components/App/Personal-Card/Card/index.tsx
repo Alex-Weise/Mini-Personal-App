@@ -25,15 +25,20 @@ const Card:FC<TCard> = ({title, img, discr, setItemID, id}) =>  {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleStepChange = (step: number) => {
-    setActiveStep(step);
-  };
+  // const handleStepChange = (step: number) => {
+  //   setActiveStep(step);
+  // };
 
     return (
         <div className={styles.card} onClick={() => setItemID(id)}>
+          <h3 className={styles.title}>{title}</h3>
           <div className={styles.image}>
             <img src={img[activeStep]} alt={title} className={styles.img} />
             <MobileStepper
+              sx={{ 
+                background: "transparent",
+                margin: "0 auto",
+              }}
               steps={maxSteps}
               position="static"
               activeStep={activeStep}
@@ -47,11 +52,11 @@ const Card:FC<TCard> = ({title, img, discr, setItemID, id}) =>  {
                 </Button>} 
               />
           </div>
-          <span className={styles.text}>
+          {/* <span className={styles.text}>
             <h3 className={styles.title}>{title}</h3>
             <p className={styles.p}>
           {discr}</p>
-          </span>
+          </span> */}
         </div>
     );
 }
