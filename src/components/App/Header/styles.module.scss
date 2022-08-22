@@ -21,8 +21,7 @@
 .titles {
     background: transparent;
     width: 50%;
-    margin-left: 15px;
-    margin-right: 15px;
+    padding: 15px;
 }
 
 .title {
@@ -39,22 +38,30 @@
 
 .serch {
     flex-direction: column;
+    position: relative;
     text-align: center;
-
+    padding: 15px 10px 0 0;
+    width: 25%;
 }
 
 .button {
+    margin-top: 10px;
     cursor: pointer;
+    background-color: rgba(253, 247, 237, 0.548);
+    font-size: 16px;
+    border: 2px solid #80932499;
+    border-radius: 2px;
 }
 
 .buttonX {
+    font-size: 18px;
     display: inline-block;
     border: 0;
     border-radius: 3px;
     background: transparent;
     position: absolute;
-    right: 0;
-    top: 1px;
+    right: 15px;
+    top: 20px;
     cursor: pointer;
 }
 
@@ -62,11 +69,21 @@
     display: none;
 }
 
-.input {
+.area {
     flex-direction: row;
     background: transparent;
     position: relative;
     border: 0;
     outline: 0;
+}
+
+.input {
+    font-size: 16px;
+    text-align: center;
+    background-color: rgba(253, 237, 237, 0.548);
+    border: 2px solid #80932499;
+    border-radius: 5px;
+    height: 25px;
+    width: 95%;
 }
 
