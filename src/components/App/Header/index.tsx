@@ -8,9 +8,10 @@ type THeader = {
     setIsHide: Function,
     total: number,
     isHide: boolean,
+    changeID: Function,
 }
 
-const Header:FC<THeader> =  ({onClick, setURL, total, setIsHide, isHide}) => {
+const Header:FC<THeader> =  ({onClick, setURL, total, setIsHide, isHide, changeID}) => {
   const [value, setValue] = useState<string>('');
 
     return (
@@ -19,9 +20,9 @@ const Header:FC<THeader> =  ({onClick, setURL, total, setIsHide, isHide}) => {
               onClick={ () => isHide ? setIsHide(false) : setIsHide(true)}>
                 <h3 className={styles.p}> Категории </h3>
             </div>
-            <div className={styles.titles} onClick={() => setURL(DEFAULT_URL)} >
+            <div className={styles.titles} onClick={() => {setURL(DEFAULT_URL); changeID(0)}} >
                 <h2 className={styles.title}>Собственно товары</h2>
-                <h3 className={styles.total}>Всего {total}</h3>
+                <h3 className={styles.total}>Всего <i>{total}</i></h3>
             </div>
             <div className={styles.serch} >
                 <input className={styles.input} type='text' placeholder='Поиск...' id="inputSearch"

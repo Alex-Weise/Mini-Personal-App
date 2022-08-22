@@ -2,13 +2,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background: transparent;
 }
 
 .title {
-// border: 2px solid black;
-display: inline;
+    display: inline;
 }
 
 .price {
@@ -19,7 +17,6 @@ display: inline;
 .image {
     justify-content: center;
     justify-self: start;
-    // border: 2px solid black;
 }
 
 .button {
@@ -36,11 +33,23 @@ display: inline;
         border-bottom: 2px solid coral;
     }
 }
+
 .img {
     display: inline;
     max-width: 400px;
     max-height: 350px;
 }
+
 .descr {
     font-size: 18px;
+}
+
+.back {
+    font-size: 16px;
+    color: chocolate;
+    display: flex;
+    border: none;
+    background: transparent;
+    position: absolute;
+    cursor: pointer;
 }

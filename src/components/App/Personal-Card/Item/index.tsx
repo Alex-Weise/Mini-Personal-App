@@ -18,13 +18,15 @@ const StyledRating = styled(Rating)({
 
 type TItem = {
     product: TContent,
+    goBack: Function,
 }
 
-const ItemCard:FC<TItem> = ({product}) => {
+const ItemCard:FC<TItem> = ({product, goBack}) => {
   const [imageURL, setImageURL] = useState<string>(product.thumbnail)
 
     return (
         <section className={styles.page}>
+          <button type="button" className={styles.back} onClick={() => goBack(0)}> {'<--'} Назад</button>
             <div className={styles.title}>
                 <h2>{product.title}</h2>
                 <h3 className={styles.price}>Price {product.price}$</h3>

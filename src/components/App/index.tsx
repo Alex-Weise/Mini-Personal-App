@@ -13,40 +13,41 @@ export const DEFAULT_REQUEST_LIMIT = 12;
 export const DEFAULT_URL = `https://dummyjson.com/products?limit=${DEFAULT_REQUEST_LIMIT}`;
 
 function App() {
-  const [categories, setCat] = React.useState<string[]>([])
-  const [isHide, setIsHide] = React.useState(true)
+  const [categories, setCat] = React.useState<string[]>([]);
+  const [isHide, setIsHide] = React.useState(true);
 
   React.useEffect( () => {
     fetch('https://dummyjson.com/products/categories')
       .then(response => response.json())
       .then(data => setCat(data))
-  }, [])
+  }, []);
 
-  const [search, setSearch] = React.useState<string>('')
-  const [category, setCategory] = React.useState<string>('')
-  const [skip, setSkip] = React.useState<number>(DEFAULT_REQUEST_LIMIT)
-  const [URL, setURL] = React.useState<string>(DEFAULT_URL)
-  const [total, setTotal] = React.useState<number>(0)
-  const [concatURL, setConcatURL] = React.useState<string>(``)
+  const [search, setSearch] = React.useState<string>('');
+  const [category, setCategory] = React.useState<string>('');
+  const [skip, setSkip] = React.useState<number>(DEFAULT_REQUEST_LIMIT);
+  const [URL, setURL] = React.useState<string>(DEFAULT_URL);
+  const [total, setTotal] = React.useState<number>(0);
+  const [concatURL, setConcatURL] = React.useState<string>(``);
+  const [itemID, setItemID] = React.useState<number>(0)
 
   React.useEffect ( () => {
     if (!!search) {
       setURL(`https://dummyjson.com/products/search?q=${search}&limit=${DEFAULT_REQUEST_LIMIT}`)
     }
     return () => {
-      setSearch('')
-      setTotal(0)
+      setSearch('');
+      setTotal(0);
     }
-  }, [search])
+  }, [search]);
 
   React.useEffect ( () => {
     if(!!category) {
       setURL(`https://dummyjson.com/products/category/${category}?limit=${DEFAULT_REQUEST_LIMIT}`)
     }
     return () => {
-      setCategory('')
+      setCategory('');
     }
-  }, [category])
+  }, [category]);
 
   React.useEffect ( () => {
     const handlerscroll = () => {
@@ -56,7 +57,7 @@ function App() {
           setSkip(skip + DEFAULT_REQUEST_LIMIT)
           setConcatURL(URL + `&skip=${skip}`)
         }
-  }
+  };
     if (total > 9 && !(skip >= total)) {
         window.addEventListener('scroll', handlerscroll)
     }
@@ -65,21 +66,21 @@ function App() {
       setConcatURL(``)
     }
     
-  }, [skip, total, URL])
+  }, [skip, total, URL]);
   
   return (
     <>
       <header className={styles.header}>
-        <Header onClick={setSearch} setURL={setURL} total={total}
-          setIsHide={setIsHide} isHide={isHide} />
+        <Header onClick={setSearch} setURL={setURL} total={itemID ? 1 : total}
+          setIsHide={setIsHide} isHide={isHide} changeID={setItemID} />
       </header>
       <main className={styles.app}>
         <Collapse orientation="horizontal" in={!isHide}>
-           <Category categories={categories} onClick={setCategory} />
+           <Category categories={categories} onClick={setCategory} setURL={setURL} />
         </Collapse>
         <Suspense fallback={<CircularProgress />}>
-          <PersonalCard URL={URL} total={setTotal} concatURL={concatURL} 
-            clearSkip={setSkip}/>
+          <PersonalCard URL={URL} setTotal={setTotal} concatURL={concatURL} 
+            clearSkip={setSkip} changeID={setItemID} itemID={itemID}/>
         </Suspense>
       </main>
       <footer className={styles.footer}> 

@@ -1,4 +1,4 @@
-import React, { FC, Suspense, useEffect, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 import styles from "./styles.module.scss"
 import Card from "./Card"
 import CircularProgress from '@mui/material/CircularProgress'
@@ -8,18 +8,19 @@ import ItemCard from "./Item"
 
 type TPersonalCard = {
   URL: string,
-  total: Function,
+  setTotal: Function,
   concatURL: string,
   clearSkip: Function,
+  changeID: Function,
+  itemID: number,
 }
 
-const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
-  const [product, setProduct] = useState<TContent>(Object)
+const PersonalCard:FC<TPersonalCard> = ({URL, setTotal, concatURL, clearSkip, changeID, itemID}) => {
+  const [product, setProduct] = useState<TContent>({} as TContent)
   const [products, setProducts] = useState<TContent[]>([])
   const [isError, setIsError] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(true)
   const [isSerchErr, setIsSearchErr] = React.useState<string>('')
-  const [itemID, setItemID] = useState<number>(0)
 
   useEffect ( () => {
     fetch(URL)
@@ -28,7 +29,7 @@ const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
         if(data.products.length === 0) setIsSearchErr("Поиск не дал результатов")
         else { 
           setProducts(data.products)
-          total(data.total);}
+          setTotal(data.total);}
       })
       .catch(err => setIsError(true))
       .finally(() => setIsLoading(false)) 
@@ -36,8 +37,10 @@ const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
     return () => {
       clearSkip(DEFAULT_REQUEST_LIMIT);
       setIsError(false);
-      setIsSearchErr('')}
-  },[URL, clearSkip, total])
+      setIsSearchErr('');
+      changeID(0);
+    }
+  },[URL, clearSkip, setTotal, changeID])
 
   useEffect ( () => {
     async function Concat() {
@@ -49,44 +52,26 @@ const PersonalCard:FC<TPersonalCard> = ({URL, total, concatURL, clearSkip}) => {
 
   }, [concatURL, products])
 
-  // useEffect ( () => {
-  //   const GetProductOne = (id:number) => {
-  //     const one = products.find( item => item.id === id);
-  //     setProduct(one);
-  //     console.log(one, "Use Effect")
-  //   }
-  //   if (itemID > 0) {
-  //    GetProductOne(itemID)
-  //   }
-
-  //   return () => {setItemID(0)}
-  // }, [itemID])
   const GetProductOne = (id:number) => {
     const one = products.find( item => item.id === id);
-    setItemID(id);
-    // setProduct(one);     // Для проверки!
-    console.log(one, "Use Effect")
+    changeID(id);
+    setProduct(one!);  
   }
 
- if (isError || isSerchErr) {
+  if (isError || isSerchErr) {
    return (<section className={styles.error}>
              {isSerchErr &&<h2>{isSerchErr}</h2>}
              {isError && <h2>Произошла ошибка</h2>}
           </section>)
-  // } else if (!!itemID) {
-  //   return (<section>
-  //             <ItemCard product={product} /> 
-  //           </section>);
-  } else {
-     return (
+  }
+  return (
         <section className={styles.section_card}>
-          {false ? <ItemCard product={product} /> : 
+          {isLoading ? <CircularProgress /> : 
+            itemID ? <ItemCard product={product} goBack={changeID} /> :
               products.map( (item) => {
                  return (<Card title={item.brand} img={item.images} id={item.id}
                    discr={item.description} key={item.id} setItemID={GetProductOne}/>)})}
         </section>
       );
-  }
 }
 export default PersonalCard;
-            // { isLoading ? <CircularProgress /> : 
