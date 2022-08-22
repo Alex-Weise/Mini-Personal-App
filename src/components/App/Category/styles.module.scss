@@ -6,4 +6,24 @@
     margin: 10px;
     background: transparent;
     border-radius: 5px;
-}
+};
+
+.button {
+    margin: 5px;
+    padding: 2px;
+    background: transparent;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: start;
+    border: 0;
+    border-radius: 4px;
+    width: 130px;
+    font-size: 16px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.2);
+        background-color: #dfefa0a2;
+        border-bottom: 2px solid black;
+        margin: 4px 10px;
+    };
+  };
+  

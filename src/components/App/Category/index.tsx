@@ -1,5 +1,4 @@
 import React, {FC} from "react";
-import Button from "./Button";
 import styles from "./styles.module.scss";
 
 
@@ -12,8 +11,13 @@ const Category: FC<TCatergory> =  ({categories, onClick}) => {
 
     return (
         <section className={styles.buttons}>
-         {categories.map( (item:string, index) => {
-             return <Button name={item} key={index} onClick={(str:string) => onClick(str)} />
+         {categories.map( (item:string) => {
+            const str:string = item[0].toUpperCase() + item.slice(1);
+            return (  
+                <button type="button" key={item} className={styles.button} onClick={() => onClick(item)} >
+                    {str}
+                </button>
+            )
           })}
         </section>
     );
