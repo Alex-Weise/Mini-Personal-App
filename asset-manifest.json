@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Mini-Personal-App/static/css/main.9d41d204.css",
+    "main.js": "/Mini-Personal-App/static/js/main.86f673e1.js",
+    "static/media/Background_image.jpg": "/Mini-Personal-App/static/media/Background_image.30a607113739251a4151.jpg",
+    "static/media/icon-heart.png": "/Mini-Personal-App/static/media/icon-heart.cb2fc326cdf3f3fff83e.png",
+    "index.html": "/Mini-Personal-App/index.html",
+    "main.9d41d204.css.map": "/Mini-Personal-App/static/css/main.9d41d204.css.map",
+    "main.86f673e1.js.map": "/Mini-Personal-App/static/js/main.86f673e1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9d41d204.css",
+    "static/js/main.86f673e1.js"
+  ]
+}
