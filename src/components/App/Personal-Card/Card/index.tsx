@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, SyntheticEvent } from "react";
 import styles from "./styles.module.scss";
 import { MobileStepper } from "@mui/material";
 import Button from '@mui/material/Button';
@@ -17,27 +17,26 @@ const Card:FC<TCard> = ({title, img, discr, setItemID, id}) =>  {
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = img.length;
 
-  const handleNext = () => {
+  const handleNext = (event:SyntheticEvent) => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    // event.stopPropagation()
   };
 
-  const handleBack = () => {
+  const handleBack = (event:SyntheticEvent) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    // event.stopPropagation()
   };
-
-  // const handleStepChange = (step: number) => {
-  //   setActiveStep(step);
-  // };
 
     return (
-        <div className={styles.card} onClick={() => setItemID(id)}>
-          <h3 className={styles.title}>{title}</h3>
+        <div className={styles.card}>
+          <h3 className={styles.title} onClick={() => setItemID(id)}>{title}</h3>
           <div className={styles.image}>
             <img src={img[activeStep]} alt={title} className={styles.img} />
             <MobileStepper
               sx={{ 
                 background: "transparent",
                 margin: "0 auto",
+                width: "90%",
               }}
               steps={maxSteps}
               position="static"
@@ -52,21 +51,8 @@ const Card:FC<TCard> = ({title, img, discr, setItemID, id}) =>  {
                 </Button>} 
               />
           </div>
-          {/* <span className={styles.text}>
-            <h3 className={styles.title}>{title}</h3>
-            <p className={styles.p}>
-          {discr}</p>
-          </span> */}
         </div>
     );
 }
 
 export default Card;
-
-// style={{
-//   backgroundImage: `url(${img})`,
-//   backgroundSize: `contain`,
-//   backgroundPosition: `center`,
-//   backgroundRepeat: `no-repeat`,
-// onClick={() => setItemID(id)}
-//  }}
